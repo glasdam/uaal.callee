@@ -11,6 +11,8 @@ import org.universAAL.middleware.service.owls.profile.ServiceProfile;
 import org.universAAL.ontology.phThing.DeviceService;
 import org.universAAL.ontology.rehabontology.ExerciseAnalyser;
 import org.universAAL.ontology.rehabontology.ExerciseResults;
+import org.universAAL.ontology.rehabontology.RehabontologyOntology;
+import org.universAAL.ontology.rehabontology.SuggestionResult;
 import org.universAAL.ontology.device.SwitchController;
 
 /* -Example- This service example provides Device Services*/
@@ -20,13 +22,18 @@ public class SCalleeProvidedService extends DeviceService {
 	 * -Example- this namespace can be reused in many parts of the code, but not
 	 * all of them
 	 */
-	protected static final String SERVICE_OWN_NAMESPACE = "http://your.ontology.URL.com/YourServerDomainOntology.owl#";
+	protected static final String SERVICE_OWN_NAMESPACE = RehabontologyOntology.NAMESPACE;
+			//"http://your.ontology.URL.com/YourServerDomainOntology.owl#";
 	// TODO: Change Namespace
 	public static final String MY_URI = SERVICE_OWN_NAMESPACE
-			+ "OnOffActuatorTemplateService";
+			+ "ExerciseAnalyse";
 	protected static final String SERVICE_GET_EXERCISE_SUGGESTION_URI = SERVICE_OWN_NAMESPACE
-			+ "getStatus";
-	protected static final String SERVICE_SET_STATUS_URI = SERVICE_OWN_NAMESPACE
+			+ "getSuggestion";
+	protected static final String OUTPUT_SUGGESTION = SERVICE_OWN_NAMESPACE
+			+ "outputSuggestion";
+	protected static final String INPUT_RESULTS = SERVICE_OWN_NAMESPACE
+			+ "inputResults";
+/*	protected static final String SERVICE_SET_STATUS_URI = SERVICE_OWN_NAMESPACE
 			+ "setStatus";
 	protected static final String OUTPUT_STATUS = SERVICE_OWN_NAMESPACE
 			+ "outputStatus";
@@ -34,9 +41,9 @@ public class SCalleeProvidedService extends DeviceService {
 			+ "inputStatus";
 	protected static final String INPUT_DEVICE = SERVICE_OWN_NAMESPACE
 			+ "inputDevice";
-
+*/
 	/* INPUT
-	 *  [ [result (integer), Timestamp (long) ] ]
+	 *  [ [result (double)], [Timestamp (double)] ]
 	 * OUTPUT
 	 * [ suggestion (integer), slope (float), baseline (integer) ]
 	 */
@@ -62,8 +69,9 @@ public class SCalleeProvidedService extends DeviceService {
 		// Declaration of first profile. In: SwitchController; Out: StatusValue
 		SCalleeProvidedService getExerciseSuggestion = new SCalleeProvidedService(
 				SERVICE_GET_EXERCISE_SUGGESTION_URI);
-		getExerciseSuggestion.addInputWithAddEffect(INPUT_DEVICE, ExerciseResults.MY_URI, 1, -1, new String []{ ExerciseAnalyser.PROP_EXERCISE_RESULTS });
-/*		getExerciseSuggestion.addOutput(OUTPUT_STATUS,
+		getExerciseSuggestion.addInputWithAddEffect(SERVICE_GET_EXERCISE_SUGGESTION_URI, ExerciseResults.MY_URI, 1, -1, new String []{ ExerciseAnalyser.PROP_EXERCISE_RESULTS });
+		getExerciseSuggestion.addOutput(SERVICE_GET_EXERCISE_SUGGESTION_URI, SuggestionResult.MY_URI, 1, 1, new String []{ ExerciseAnalyser.PROP_SUGGESTION_RESULT });
+		/*		getExerciseSuggestion.addOutput(OUTPUT_STATUS,
 				TypeMapper.getDatatypeURI(Boolean.class), 1, 1, new String[] {
 						DeviceService.PROP_CONTROLS,
 						SwitchController.PROP_HAS_VALUE });

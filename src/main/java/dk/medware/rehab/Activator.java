@@ -13,7 +13,7 @@ public class Activator implements BundleActivator {
 
 	public static SCallee scallee = null;
 	public static CSubscriber csubscriber = null;
-	public static CPublisher cpublisher = null;
+//	public static CPublisher cpublisher = null;
 
 	public void start(BundleContext bcontext) throws Exception {
         	Activator.osgiContext = bcontext;
@@ -21,13 +21,13 @@ public class Activator implements BundleActivator {
         		.registerModule(new Object[] { bcontext });
         	scallee = new SCallee(context);
         	csubscriber = new CSubscriber(context);
-        	cpublisher = new CPublisher(context);
+  //      	cpublisher = new CPublisher(context);
 	}
 
 	public void stop(BundleContext arg0) throws Exception {
         	scallee.close();
         	csubscriber.close();
-        	cpublisher.close();
+ //       	cpublisher.close();
 	}
 
 }
