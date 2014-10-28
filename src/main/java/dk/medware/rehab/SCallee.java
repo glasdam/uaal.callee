@@ -16,7 +16,7 @@ import org.universAAL.ontology.rehabontology.ExerciseResults;
 import org.universAAL.ontology.rehabontology.SuggestionResult;
 
 public class SCallee extends ServiceCallee {
-	private SwitchController theDevice;
+	//private SwitchController theDevice;
 	/* -Example- An error response for common use */
 	private static final ServiceResponse failure = new ServiceResponse(
 			CallStatus.serviceSpecificFailure);
@@ -37,7 +37,7 @@ public class SCallee extends ServiceCallee {
 
 	public void communicationChannelBroken() {
 		/* -Example- Remove the virtual SwitchController */
-		theDevice = null;
+		//theDevice = null;
 	}
 
 	public ServiceResponse handleCall(ServiceCall call) {

@@ -1,6 +1,5 @@
 package dk.medware.rehab;
 
-
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.universAAL.middleware.container.ModuleContext;
@@ -18,8 +17,10 @@ public class Activator implements BundleActivator {
 		Activator.osgiContext = bcontext;
 		Activator.context = uAALBundleContainer.THE_CONTAINER
 				.registerModule(new Object[] { bcontext });
+		System.out.println("Callee registering");
 		scallee = new SCallee(context);
 		csubscriber = new CSubscriber(context);
+		System.out.println("Callee ready");
 		//      	cpublisher = new CPublisher(context);
 	}
 
