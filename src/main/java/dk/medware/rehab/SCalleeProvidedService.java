@@ -69,8 +69,8 @@ public class SCalleeProvidedService extends DeviceService {
 		// Declaration of first profile. In: SwitchController; Out: StatusValue
 		SCalleeProvidedService getExerciseSuggestion = new SCalleeProvidedService(
 				SERVICE_GET_EXERCISE_SUGGESTION_URI);
-		getExerciseSuggestion.addInputWithAddEffect(SERVICE_GET_EXERCISE_SUGGESTION_URI, ExerciseResults.MY_URI, 1, -1, new String []{ ExerciseAnalyser.PROP_EXERCISE_RESULTS });
-		getExerciseSuggestion.addOutput(SERVICE_GET_EXERCISE_SUGGESTION_URI, SuggestionResult.MY_URI, 1, 1, new String []{ ExerciseAnalyser.PROP_SUGGESTION_RESULT });
+		getExerciseSuggestion.addInputWithAddEffect(INPUT_RESULTS, ExerciseResults.MY_URI, 1, -1, new String []{ ExerciseAnalyser.PROP_EXERCISE_RESULTS });
+		getExerciseSuggestion.addOutput(OUTPUT_SUGGESTION, SuggestionResult.MY_URI, 1, 1, new String []{ ExerciseAnalyser.PROP_SUGGESTION_RESULT });
 		/*		getExerciseSuggestion.addOutput(OUTPUT_STATUS,
 				TypeMapper.getDatatypeURI(Boolean.class), 1, 1, new String[] {
 						DeviceService.PROP_CONTROLS,
