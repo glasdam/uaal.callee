@@ -23,7 +23,7 @@ public class SCalleeProvidedService extends DeviceService {
 	 * all of them
 	 */
 	protected static final String SERVICE_OWN_NAMESPACE = RehabontologyOntology.NAMESPACE;
-			//"http://your.ontology.URL.com/YourServerDomainOntology.owl#";
+	//"http://your.ontology.URL.com/YourServerDomainOntology.owl#";
 	// TODO: Change Namespace
 	public static final String MY_URI = SERVICE_OWN_NAMESPACE
 			+ "ExerciseAnalyse";
@@ -33,7 +33,7 @@ public class SCalleeProvidedService extends DeviceService {
 			+ "outputSuggestion";
 	protected static final String INPUT_RESULTS = SERVICE_OWN_NAMESPACE
 			+ "inputResults";
-/*	protected static final String SERVICE_SET_STATUS_URI = SERVICE_OWN_NAMESPACE
+	/*	protected static final String SERVICE_SET_STATUS_URI = SERVICE_OWN_NAMESPACE
 			+ "setStatus";
 	protected static final String OUTPUT_STATUS = SERVICE_OWN_NAMESPACE
 			+ "outputStatus";
@@ -41,7 +41,7 @@ public class SCalleeProvidedService extends DeviceService {
 			+ "inputStatus";
 	protected static final String INPUT_DEVICE = SERVICE_OWN_NAMESPACE
 			+ "inputDevice";
-*/
+	 */
 	/* INPUT
 	 *  [ [result (double)], [Timestamp (double)] ]
 	 * OUTPUT
@@ -60,11 +60,11 @@ public class SCalleeProvidedService extends DeviceService {
 				Activator.context,
 				new SimpleOntology(MY_URI, ExerciseAnalyser.MY_URI,
 						new ResourceFactory() {
-							public Resource createInstance(String classURI,
-									String instanceURI, int factoryIndex) {
-								return new SCalleeProvidedService(instanceURI);
-							}
-						}));
+					public Resource createInstance(String classURI,
+							String instanceURI, int factoryIndex) {
+						return new SCalleeProvidedService(instanceURI);
+					}
+				}));
 
 		// Declaration of first profile. In: SwitchController; Out: StatusValue
 		SCalleeProvidedService getExerciseSuggestion = new SCalleeProvidedService(
@@ -75,17 +75,17 @@ public class SCalleeProvidedService extends DeviceService {
 				TypeMapper.getDatatypeURI(Boolean.class), 1, 1, new String[] {
 						DeviceService.PROP_CONTROLS,
 						SwitchController.PROP_HAS_VALUE });
-						*/
-//		profiles[0].getTheService().addInstanceLevelRestriction(r, new String[] { DeviceService.PROP_CONTROLS });
+		 */
+		//		profiles[0].getTheService().addInstanceLevelRestriction(r, new String[] { DeviceService.PROP_CONTROLS });
 		profiles[0] = getExerciseSuggestion.getProfile();
 	}
 
 	protected SCalleeProvidedService(String uri) {
 		super(uri);
 	}
-	
-	 public String getClassURI() {
-		 return MY_URI;
-	 }
+
+	public String getClassURI() {
+		return MY_URI;
+	}
 
 }

@@ -5,7 +5,6 @@ import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.universAAL.middleware.container.ModuleContext;
 import org.universAAL.middleware.container.osgi.uAALBundleContainer;
-import org.universAAL.ontology.device.StatusValue;
 
 public class Activator implements BundleActivator {
 	public static BundleContext osgiContext = null;
@@ -13,21 +12,21 @@ public class Activator implements BundleActivator {
 
 	public static SCallee scallee = null;
 	public static CSubscriber csubscriber = null;
-//	public static CPublisher cpublisher = null;
+	//	public static CPublisher cpublisher = null;
 
 	public void start(BundleContext bcontext) throws Exception {
-        	Activator.osgiContext = bcontext;
-        	Activator.context = uAALBundleContainer.THE_CONTAINER
-        		.registerModule(new Object[] { bcontext });
-        	scallee = new SCallee(context);
-        	csubscriber = new CSubscriber(context);
-  //      	cpublisher = new CPublisher(context);
+		Activator.osgiContext = bcontext;
+		Activator.context = uAALBundleContainer.THE_CONTAINER
+				.registerModule(new Object[] { bcontext });
+		scallee = new SCallee(context);
+		csubscriber = new CSubscriber(context);
+		//      	cpublisher = new CPublisher(context);
 	}
 
 	public void stop(BundleContext arg0) throws Exception {
-        	scallee.close();
-        	csubscriber.close();
- //       	cpublisher.close();
+		scallee.close();
+		csubscriber.close();
+		//       	cpublisher.close();
 	}
 
 }

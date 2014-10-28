@@ -6,14 +6,12 @@ import org.universAAL.middleware.context.ContextEvent;
 import org.universAAL.middleware.context.ContextEventPattern;
 import org.universAAL.middleware.context.ContextSubscriber;
 import org.universAAL.middleware.owl.MergedRestriction;
-import org.universAAL.ontology.device.StatusValue;
-import org.universAAL.ontology.device.SwitchController;
 import org.universAAL.ontology.rehabontology.ExerciseResults;
 
 public class CSubscriber extends ContextSubscriber {
 
 	protected CSubscriber(ModuleContext context,
-		ContextEventPattern[] initialSubscriptions) {
+			ContextEventPattern[] initialSubscriptions) {
 		super(context, initialSubscriptions);
 		// TODO Auto-generated constructor stub
 	}
@@ -33,9 +31,9 @@ public class CSubscriber extends ContextSubscriber {
 
 		ceps[0] = new ContextEventPattern();
 		ceps[0].addRestriction(MergedRestriction.getAllValuesRestriction(
-			ContextEvent.PROP_RDF_SUBJECT, ExerciseResults.MY_URI));
+				ContextEvent.PROP_RDF_SUBJECT, ExerciseResults.MY_URI));
 		ceps[0].addRestriction(MergedRestriction.getFixedValueRestriction(
-			ContextEvent.PROP_RDF_PREDICATE, ExerciseResults.PROP_TIME));
+				ContextEvent.PROP_RDF_PREDICATE, ExerciseResults.PROP_TIME));
 		return ceps;
 	}
 
@@ -46,7 +44,7 @@ public class CSubscriber extends ContextSubscriber {
 
 	public void handleContextEvent(ContextEvent event) {
 		System.out.println("handleContextEvent("+event.getNamespace()+")");
-		Object ob = event.getRDFObject();
+		//Object ob = event.getRDFObject();
 		Object subject = event.getRDFSubject();
 		if (subject instanceof ExerciseResults) {
 			ExerciseResults status = (ExerciseResults) subject;
