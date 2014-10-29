@@ -22,8 +22,7 @@ public class SCalleeProvidedService extends DeviceService {
 	 * -Example- this namespace can be reused in many parts of the code, but not
 	 * all of them
 	 */
-	protected static final String SERVICE_OWN_NAMESPACE = RehabontologyOntology.NAMESPACE;
-	//"http://your.ontology.URL.com/YourServerDomainOntology.owl#";
+	protected static final String SERVICE_OWN_NAMESPACE = "http://your.ontology.URL.com/YourServerDomainOntology.owl#";
 	// TODO: Change Namespace
 	public static final String MY_URI = SERVICE_OWN_NAMESPACE
 			+ "ExerciseAnalyse";
