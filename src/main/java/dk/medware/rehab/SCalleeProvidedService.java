@@ -22,8 +22,7 @@ public class SCalleeProvidedService extends DeviceService {
 	 * -Example- this namespace can be reused in many parts of the code, but not
 	 * all of them
 	 */
-	protected static final String SERVICE_OWN_NAMESPACE = "http://your.ontology.URL.com/YourServerDomainOntology.owl#";
-	// TODO: Change Namespace
+	protected static final String SERVICE_OWN_NAMESPACE = "http://uaal.medware.dk/rehab.owl#";
 	public static final String MY_URI = SERVICE_OWN_NAMESPACE
 			+ "ExerciseAnalyse";
 	protected static final String SERVICE_GET_EXERCISE_SUGGESTION_URI = SERVICE_OWN_NAMESPACE
@@ -32,19 +31,10 @@ public class SCalleeProvidedService extends DeviceService {
 			+ "outputSuggestion";
 	protected static final String INPUT_RESULTS = SERVICE_OWN_NAMESPACE
 			+ "inputResults";
-	/*	protected static final String SERVICE_SET_STATUS_URI = SERVICE_OWN_NAMESPACE
-			+ "setStatus";
-	protected static final String OUTPUT_STATUS = SERVICE_OWN_NAMESPACE
-			+ "outputStatus";
-	protected static final String INPUT_STATUS = SERVICE_OWN_NAMESPACE
-			+ "inputStatus";
-	protected static final String INPUT_DEVICE = SERVICE_OWN_NAMESPACE
-			+ "inputDevice";
-	 */
 	/* INPUT
 	 *  [ [result (double)], [Timestamp (double)] ]
 	 * OUTPUT
-	 * [ suggestion (integer), slope (float), baseline (integer) ]
+	 * [ suggestion (double), slope (double), baseline (double) ]
 	 */
 	/* -Example- This registers three profiles */
 	public static ServiceProfile[] profiles = new ServiceProfile[1];
@@ -64,8 +54,6 @@ public class SCalleeProvidedService extends DeviceService {
 						return new SCalleeProvidedService(instanceURI);
 					}
 				}));
-
-		// Declaration of first profile. In: SwitchController; Out: StatusValue
 		SCalleeProvidedService getExerciseSuggestion = new SCalleeProvidedService(
 				SERVICE_GET_EXERCISE_SUGGESTION_URI);
 		getExerciseSuggestion.addInputWithAddEffect(INPUT_RESULTS, ExerciseResults.MY_URI, 1, -1, new String []{ ExerciseAnalyser.PROP_EXERCISE_RESULTS });

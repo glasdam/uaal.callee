@@ -1,7 +1,9 @@
 package dk.medware.rehab;
 
 
+import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import org.universAAL.middleware.container.ModuleContext;
 import org.universAAL.middleware.service.CallStatus;
@@ -12,6 +14,7 @@ import org.universAAL.middleware.service.owls.process.ProcessOutput;
 import org.universAAL.middleware.service.owls.profile.ServiceProfile;
 import org.universAAL.ontology.device.StatusValue;
 import org.universAAL.ontology.device.SwitchController;
+import org.universAAL.ontology.rehabontology.ExerciseAnalyser;
 import org.universAAL.ontology.rehabontology.ExerciseResults;
 import org.universAAL.ontology.rehabontology.SuggestionResult;
 
@@ -64,10 +67,16 @@ public class SCallee extends ServiceCallee {
 		 * virtual SwitchController
 		 */
 		if (operation.startsWith(SCalleeProvidedService.SERVICE_GET_EXERCISE_SUGGESTION_URI)) {
-			ArrayList<ExerciseResults> results = (ArrayList<ExerciseResults>)call.getInputValue(SCalleeProvidedService.INPUT_RESULTS);
+			//ArrayList<ExerciseResults> results = (ArrayList<ExerciseResults>)call.getInputValue(SCalleeProvidedService.INPUT_RESULTS);
+			ExerciseResults results = (ExerciseResults)call.getInputValue(SCalleeProvidedService.INPUT_RESULTS);
 			System.out.println(results);
 			ServiceResponse response = new ServiceResponse(CallStatus.succeeded);
-			response.addOutput(SCalleeProvidedService.OUTPUT_SUGGESTION, new SuggestionResult());
+			List<Double> suggestion = ProgressionCalculator.calculate(Arrays.asList(results.getResults()), Arrays.asList(results.getTime()));
+			SuggestionResult suggestion_result = new SuggestionResult();
+			suggestion_result.setEstimate(suggestion.get(0));
+			suggestion_result.setSlope(suggestion.get(1));
+			suggestion_result.setRecommendation(suggestion.get(2));
+			response.addOutput(new ProcessOutput(SCalleeProvidedService.OUTPUT_SUGGESTION, suggestion));
 /*				response.addOutput(new ProcessOutput(
 						SCalleeProvidedService.OUTPUT_STATUS, theDevice
 								.getValue()));
