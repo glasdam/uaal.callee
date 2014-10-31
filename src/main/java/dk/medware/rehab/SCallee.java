@@ -69,14 +69,19 @@ public class SCallee extends ServiceCallee {
 		if (operation.startsWith(SCalleeProvidedService.SERVICE_GET_EXERCISE_SUGGESTION_URI)) {
 			//ArrayList<ExerciseResults> results = (ArrayList<ExerciseResults>)call.getInputValue(SCalleeProvidedService.INPUT_RESULTS);
 			ExerciseResults results = (ExerciseResults)call.getInputValue(SCalleeProvidedService.INPUT_RESULTS);
-			System.out.println(results);
+			System.out.println("Input: "+results);
+			
 			ServiceResponse response = new ServiceResponse(CallStatus.succeeded);
 			List<Double> suggestion = ProgressionCalculator.calculate(Arrays.asList(results.getResults()), Arrays.asList(results.getTime()));
 			SuggestionResult suggestion_result = new SuggestionResult();
-			suggestion_result.setEstimate(suggestion.get(0));
-			suggestion_result.setSlope(suggestion.get(1));
+			suggestion_result.setEstimate(suggestion.get(1));
+			suggestion_result.setSlope(suggestion.get(0));
 			suggestion_result.setRecommendation(suggestion.get(2));
-			response.addOutput(new ProcessOutput(SCalleeProvidedService.OUTPUT_SUGGESTION, suggestion));
+			System.out.println("Returning: "+suggestion_result);
+			response.addOutput(SCalleeProvidedService.OUTPUT_SUGGESTION, suggestion_result);
+//			response.addOutput(ExerciseAnalyser.PROP_SUGGESTION_RESULT, suggestion_result);
+//			response.addOutput(new ProcessOutput(ExerciseAnalyser.PROP_SUGGESTION_RESULT, suggestion_result));
+//			response.addOutput(new ProcessOutput(SCalleeProvidedService.OUTPUT_SUGGESTION, suggestion_result));
 /*				response.addOutput(new ProcessOutput(
 						SCalleeProvidedService.OUTPUT_STATUS, theDevice
 								.getValue()));
