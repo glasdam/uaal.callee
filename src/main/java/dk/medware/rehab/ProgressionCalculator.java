@@ -24,7 +24,7 @@ public class ProgressionCalculator {
 
 	public static void main(String[] args) {
 		puts("hej");
-		List<Double> xs_t = asList(1400328341.0, 1401797141.0, 1402401941.0, 1402833941.0, 1403006741.0);
+//		List<Double> xs_t = asList(1400328341.0, 1401797141.0, 1402401941.0, 1402833941.0, 1403006741.0);
 		//List<Double> ws = create_weights(xs_t);
 		List<Double> ws = asList(1.0, 1.0, 1.0, 1.0, 1.0);
 		List<Double> ys = asList(1.0, 4.0, 3.0, 2.0, 1.0);

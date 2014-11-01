@@ -1,19 +1,15 @@
 package dk.medware.rehab;
 
 
-import org.universAAL.middleware.owl.MergedRestriction;
 import org.universAAL.middleware.owl.OntologyManagement;
 import org.universAAL.middleware.owl.SimpleOntology;
 import org.universAAL.middleware.rdf.Resource;
 import org.universAAL.middleware.rdf.ResourceFactory;
-import org.universAAL.middleware.rdf.TypeMapper;
 import org.universAAL.middleware.service.owls.profile.ServiceProfile;
 import org.universAAL.ontology.phThing.DeviceService;
 import org.universAAL.ontology.rehabontology.ExerciseAnalyser;
 import org.universAAL.ontology.rehabontology.ExerciseResults;
-import org.universAAL.ontology.rehabontology.RehabontologyOntology;
 import org.universAAL.ontology.rehabontology.SuggestionResult;
-import org.universAAL.ontology.device.SwitchController;
 
 /* -Example- This service example provides Device Services*/
 public class SCalleeProvidedService extends DeviceService {
@@ -22,7 +18,7 @@ public class SCalleeProvidedService extends DeviceService {
 	 * -Example- this namespace can be reused in many parts of the code, but not
 	 * all of them
 	 */
-	protected static final String SERVICE_OWN_NAMESPACE = "http://uaal.medware.dk/rehab.owl#";
+	protected static final String SERVICE_OWN_NAMESPACE = "http://uaal.medware.dk/rehab/callee.owl#";
 	public static final String MY_URI = SERVICE_OWN_NAMESPACE
 			+ "ExerciseAnalyse";
 	protected static final String SERVICE_GET_EXERCISE_SUGGESTION_URI = SERVICE_OWN_NAMESPACE

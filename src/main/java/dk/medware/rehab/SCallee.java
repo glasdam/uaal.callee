@@ -1,9 +1,8 @@
 package dk.medware.rehab;
 
 
-import java.util.List;
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import org.universAAL.middleware.container.ModuleContext;
 import org.universAAL.middleware.service.CallStatus;
@@ -12,9 +11,6 @@ import org.universAAL.middleware.service.ServiceCallee;
 import org.universAAL.middleware.service.ServiceResponse;
 import org.universAAL.middleware.service.owls.process.ProcessOutput;
 import org.universAAL.middleware.service.owls.profile.ServiceProfile;
-import org.universAAL.ontology.device.StatusValue;
-import org.universAAL.ontology.device.SwitchController;
-import org.universAAL.ontology.rehabontology.ExerciseAnalyser;
 import org.universAAL.ontology.rehabontology.ExerciseResults;
 import org.universAAL.ontology.rehabontology.SuggestionResult;
 
