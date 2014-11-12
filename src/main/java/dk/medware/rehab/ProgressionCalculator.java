@@ -46,6 +46,8 @@ public class ProgressionCalculator {
 
 	public static List<Double> calculate_simple(List<Double> xs, List<Double> ys){
 		xs = adjust_x(xs);
+    System.out.println("xs: "+xs);
+    System.out.println("ys: "+ys);
 		Double mean_x = mean(xs);
 		Double mean_y = mean(ys);
 
@@ -63,8 +65,10 @@ public class ProgressionCalculator {
 
     Double intercept = mean_y - (slope * mean_x);
     List<Double> results = new ArrayList<Double>();
+    System.out.println("y(x) = "+slope+"x + "+intercept);
     Double max = Collections.max(xs);
     Double estimate = intercept+slope*max;
+    System.out.println("y("+max+") = " + estimate);
     Double recommendation = recommendation(estimate, slope);
     results.add(slope);
     results.add(intercept);
