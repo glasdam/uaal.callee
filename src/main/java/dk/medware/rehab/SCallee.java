@@ -68,7 +68,7 @@ public class SCallee extends ServiceCallee {
 			System.out.println("Input: "+results);
 			
 			ServiceResponse response = new ServiceResponse(CallStatus.succeeded);
-			List<Double> suggestion = ProgressionCalculator.calculate_simple(Arrays.asList(results.getResults()), Arrays.asList(results.getTime()));
+			List<Double> suggestion = ProgressionCalculator.calculate_simple(Arrays.asList(results.getTime()), Arrays.asList(results.getResults()));
 			SuggestionResult suggestion_result = new SuggestionResult();
 			suggestion_result.setEstimate(suggestion.get(2));
 			suggestion_result.setSlope(suggestion.get(0));
